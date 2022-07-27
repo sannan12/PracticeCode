@@ -4,26 +4,26 @@ const { Schema } = require("mongoose")
 let schema = new Schema({
     name: {
         type: String,
-        success: true,
+        require: true,
     },
     university: {
         type: String,
-        success: true,
+        require: true,
 
     },
     rollno: {
         type: String,
-        success: true,
+        require: true,
 
     },
     city: {
         type: String,
-        success: true,
+        require: true,
 
     },
     sector: {
         type: String,
-        success: true,
+        require: true,
     },
 
 

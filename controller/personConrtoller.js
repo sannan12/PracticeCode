@@ -2,6 +2,7 @@ const personModel=require('../model/personModel');
 class personController{
     constructor(){
         this.createperson=this.createperson.bind(this);
+        this.getperson=this.getperson.bind(this);
         this.response={
             success:true,
             data:"",
@@ -32,7 +33,20 @@ class personController{
             return res.status(200).send(responseclass.response)
         })
     }
-}
+    async getperson(req,res){
+        const responseclass= new personController();
+        personModel.find(function(error,result){
+            if(error){
+                responseclass.getperson.errorresponse=error
+                return res.status(500).send(responseclass.errorresponse)
+            }
+            responseclass.response.data=result
+            return res.status(200).send(responseclass.response)
+        })
+    }
+    
+
+};
 
 
 module.exports = new personController;
