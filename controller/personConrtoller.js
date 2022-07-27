@@ -14,6 +14,7 @@ class personController{
             error:"",
         };
     };
+    // Name
 
     async createperson(req,res){
         const responseclass = new personController();
