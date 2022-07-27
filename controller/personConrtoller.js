@@ -14,7 +14,7 @@ class personController{
             error:"",
         };
     };
-    // Name
+    // Sannan
 
     async createperson(req,res){
         const responseclass = new personController();

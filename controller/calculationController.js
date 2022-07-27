@@ -13,7 +13,7 @@ class calculationController {
             error: "",
         }
     }
-    // Name
+    // Calculation
     async findcalculation(req, res) {
         const responseclass = new calculationController();
     //calculator multiplication
