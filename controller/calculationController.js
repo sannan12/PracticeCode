@@ -16,7 +16,7 @@ class calculationController {
     // Name
     async findcalculation(req, res) {
         const responseclass = new calculationController();
-
+    //calculator multiplication
         let num1 = parseInt(req.body.num1);
         let num2 = parseInt(req.body.num2);
         let num3 = parseInt(req.body.num3);
