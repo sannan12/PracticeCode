@@ -49,6 +49,44 @@ class studentController {
 
     }
 
+    async updatestudent(req, res) {
+        const responseclass = new studentController();
+        let studentupdateobject = {
+            name: req.body.name,
+            rollno: req.body.rollno,
+            university: req.body.university,
+            city: req.body.city,
+            sector: req.body.sector,
+        }
+
+        studentModel.findOneAndUpdate({ 'city': req.body.city }, studentupdateobject, function (error, result) {
+            if (error) {
+                responseclass.errorresponse.error = error
+                return res.status(500).send(responseclass.errorresponse)
+            }
+            if (result) {
+                responseclass.response.data = result
+                return res.status(200).send(responseclass.response)
+
+            }
+
+        })
+    }
+    async deletestudent(req, res) {
+        const responseclass = new studentController();
+
+        studentModel.findOneAndRemove({ 'rank': req.body.rollno }, function (error, result) {
+            if (error) {
+                responseclass.errorresponse.error = error
+                return res.status(500).send(response.errorresponse)
+            }
+            if (result) {
+                responseclass.response.data = result
+                return res.status(200).send(responseclass.response)
+            }
+
+        })
+    }
 };
 
 

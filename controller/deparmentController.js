@@ -37,16 +37,48 @@ class departmentController {
         departmentModel.find(function (error, result) {
             if (error) {
                 responseclass.errorresponse.error = error
-                return res.status500.send(response.errorresponse)
+                return res.status(500).send(response.errorresponse)
 
             }
             responseclass.response.data = result
             return res.status(200).send(responseclass.response)
         })
     }
+    async updatedepartment(req, res) {
+        const responseclass = new departmentController();
+        let departmentupdateobject = {
+            rank: req.body.rank,
+            occupation: req.body.occupation,
+            place: req.body.place,
+        }
+        departmentModel.findOneAndUpdate({ 'rank': req.body.rank }, departmentupdateobject, function (error, result) {
+            if (error) {
+                responseclass.errorresponse.error = error
+                return res.status(500).send(response.errorresponse)
+            }
+            if (result)
+                responseclass.response.data = result
+            return res.status(200).send(responseclass.reponse)
+
+
+        })
+    }
+
+    async deletedepartment(req, res) {
+        const responseclass = new departmentController();
+
+        departmentModel.findOneAndRemove({ 'rank': req.body.rank }, function (error, result) {
+            if (error) {
+                responseclass.errorresponse.error = error
+                return res.status(500).send(response.errorresponse)
+            }
+            if (result) {
+                responseclass.response.data = result
+                return res.status(200).send(responseclass.response)
+            }
+
+        })
+    }
 };
-
-
-
 
 module.exports = new departmentController;
